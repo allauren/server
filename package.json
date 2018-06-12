@@ -1,0 +1,25 @@
+{
+  "name": "alexis",
+  "version": "1.0.0",
+  "description": "projet",
+  "main": "server.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "allauren",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allauren/server.git"
+  },
+  "keywords": [
+    "none"
+  ],
+  "bugs": {
+    "url": "https://github.com/allauren/server/issues"
+  },
+  "homepage": "https://github.com/allauren/server#readme"
+}
