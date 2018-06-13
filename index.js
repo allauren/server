@@ -3,9 +3,9 @@ const opn = require('opn');
 const mongoose = require ('mongoose');
 var parser = require('body-parser');
 
-mongoose.connect('mongodb://root:2101Mana@ds016138.mlab.com:16138/datas', function(err) {
- 
-  if (err) { throw err; }
+mongoose.connect('mongodb://root:2101Mana@ds016138.mlab.com:16138/datas', (err) =>{
+  if (err) { throw err; 
+  }
   else {
 			console.log('Successfully connected to MongoDB')
 		}
@@ -15,45 +15,38 @@ mongoose.connect('mongodb://root:2101Mana@ds016138.mlab.com:16138/datas', functi
 			film : String,
 			author :String,
 		});
-		var film = mongoose.model("film", template);
-
+	var film = mongoose.model("film", template);
 	app = express();
 	app.use(parser());
 	app.use(parser.urlencoded({extended: false}));
 	app.use(express.static('public'));
-
-	app.post('/add', (req, res) =>{
-	if (req.body.author||req.body.film)
+	app.post('/add', (req, res) => {
+	if (req.body.author || req.body.film)
 	{
-			if (!req.body.film)
-			{
+			if (!req.body.film){
 				req.body.film = "to find";
 			}
 			if (!req.body.author){
 				req.body.author = "to find";
 			}
-			
 		var nfilm = new film({
 			film : req.body.film,
 			author : req.body.author,
 		});
-
-		 nfilm.save( (error) =>
-		 {
+		 nfilm.save( (error) =>{
 	     console.log("et hop c est parti");
 		 if (error) {
      		console.error(error);
 		 	}
 		 });
 	}
-	else
-	{
+	else{
 		console.log('error');
 	}
 			  res.redirect('/');
 	});
-	app.get('/', (req, res)=> {
+	app.get('/',  (req, res)=> {
 		res.type('.html');
 		res.sendFile(__dirname + '/public/index.html');
 	});
-app.listen(8080);
+app.listen(1080);
