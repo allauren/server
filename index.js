@@ -23,18 +23,23 @@ mongoose.connect('mongodb://root:2101Mana@ds016138.mlab.com:16138/datas', functi
 	app.use(express.static('public'));
 
 	app.post('/add', (req, res) =>{
-	if (req.body.author != 'undefined' || req.body.film != 'undefined')
+	if (req.body.author||req.body.film)
 	{
+			var lfilm ;
+
+			if (req.body.film)
+			{
+				film =req.body.film = "to find";
+			}
 	
-	
+			if (req.body.author){
+				req.body.author = "to find";
+			}
+			
 		var nfilm = new film({
-		film : req.body.film,
-		author :req.body.film,	
+			film :req.body.film,
+			author :req.body.author,
 		});
-		 console.log('author');
-		 console.log(req.body.author);
-		 console.log('film');
-		 console.log(req.body.film);
 
 		 nfilm.save( (error) =>
 		 {
@@ -54,8 +59,4 @@ mongoose.connect('mongodb://root:2101Mana@ds016138.mlab.com:16138/datas', functi
 		res.type('.html');
 		res.sendFile(__dirname + '/public/index.html');
 	});
-
-mongoose.connection.close();
-
-
 app.listen(8080);
