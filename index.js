@@ -25,13 +25,10 @@ mongoose.connect('mongodb://root:2101Mana@ds016138.mlab.com:16138/datas', functi
 	app.post('/add', (req, res) =>{
 	if (req.body.author||req.body.film)
 	{
-			var lfilm ;
-
 			if (req.body.film)
 			{
 				film =req.body.film = "to find";
 			}
-	
 			if (req.body.author){
 				req.body.author = "to find";
 			}
