@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "projet",
   "main": "server.js",
-  "dependencies": {},
+  "dependencies": {
+    "nodemon": "^1.17.5"
+  },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+	"start" :"nodemon index.js"
   },
   "author": "allauren",
   "license": "ISC",
