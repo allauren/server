@@ -10,24 +10,46 @@ mongoose.connect('mongodb://root:2101Mana@ds016138.mlab.com:16138/datas', functi
 			console.log('Successfully connected to MongoDB')
 		}
 });
+	var Schema =  mongoose.Schema;
+	var template = new Schema({ 
+			film : String,
+			author :String,
+		});
+		var film = mongoose.model("film", template);
 
-var template = new mongoose.Schema({ 
-	film : String,
-	author :String,
-})
+	app = express();
+	app.use(parser());
+	app.use(parser.urlencoded({extended: false}));
+	app.use(express.static('public'));
 
-app = express();
-app.use(parser());
-app.use(parser.urlencoded({extended: false}));
-app.use(express.static('public'));
+	app.post('/add', (req, res) =>{
+	if (req.body.author != 'undefined' || req.body.film != 'undefined')
+	{
+	
+	
+		var nfilm = new film({
+		film : req.body.film,
+		author :req.body.film,	
+		});
+		 console.log('author');
+		 console.log(req.body.author);
+		 console.log('film');
+		 console.log(req.body.film);
 
-app.post('/add', (req, res) =>{
- console.log('author');
- console.log(req.body.author);
-console.log('film');
-  console.log(req.body.film);
-  res.redirect('/');
-});
+		 nfilm.save( (error) =>
+		 {
+	     console.log("Your bee has been saved!");
+		 if (error) {
+     		console.error(error);
+		 	}
+		 });
+	}
+	else
+	{
+		console.log('error');
+	}
+			  res.redirect('/');
+	});
 	app.get('/', (req, res)=> {
 		res.type('.html');
 		res.sendFile(__dirname + '/public/index.html');
