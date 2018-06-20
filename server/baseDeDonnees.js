@@ -1,22 +1,14 @@
 const mongoose = require ('mongoose');
 
-mongoose.connect('mongodb://root:2101Mana@ds016138.mlab.com:16138/datas', (err) =>{
-  if (err) 
-  { throw err;}
-  else 
-  {
-  	console.log('Successfully connected to MongoDB')}
-});
 	var Schema =  mongoose.Schema;
 	var template = new Schema({ 
 			film : String,
 			author :String,
 		});
 		var film = mongoose.model("film", template);
-	app.use(parser());
-	app.use(parser.urlencoded({extended: false}));
-	app.use(express.static('public'));
-	app.post('/add', (req, res) => {
+
+module.exports = {
+	func :(req, res) => {
 	if (req.body.author || req.body.film)
 	{
 			if (!req.body.film){
@@ -40,4 +32,5 @@ mongoose.connect('mongodb://root:2101Mana@ds016138.mlab.com:16138/datas', (err) 
 		console.log('error');
 	}
 			  res.redirect('/');
-	});
+	},
+};
