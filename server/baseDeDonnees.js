@@ -1,11 +1,8 @@
 const mongoose = require ('mongoose');
-
-	var Schema =  mongoose.Schema;
-	var template = new Schema({ 
-			film : String,
-			author :String,
-		});
-		var film = mongoose.model("film", template);
+const LocalStrategy = require('passport-local').Strategy;
+const Auth0Strategy = require('passport-auth0');
+const passport = require('passport');
+const models = require('./modeles')
 
 module.exports = {
 	func :(req, res) => {
@@ -33,4 +30,8 @@ module.exports = {
 	}
 			  res.redirect('/');
 	},
+
+  login : (username, password, done) =>{
+ 
+  }
 };
