@@ -27,6 +27,8 @@ app.use(express.static('public'));
 
 app.use(flash());
 
+app.engine('.html', require('ejs').renderFile);
+app.set('view engine', 'html');
 app.use(expressSession({secret: 'mySecretKey'}));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -39,7 +41,8 @@ route(app, __dirname, passport);
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
-   res.redirect('/caca');
+    res.sendFile(__dirname + '/public/caca.html');
+
 });
 
 console.log ('j ecoute sur le port' + port);

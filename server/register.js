@@ -8,7 +8,7 @@ module.exports = function(passport){
         (req, username, password, done) =>{
 
             findOrCreateUser = function(){
-                User.user.findOne({ 'register' :  username }, (err, user) =>{
+                User.user.findOne({ 'username' :  username }, (err, user) =>{
                     if (err){
                         console.log('Error in SignUp: '+err);
                         return done(err);
