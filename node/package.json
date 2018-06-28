@@ -1,0 +1,30 @@
+{
+  "name": "alexis",
+  "version": "1.0.0",
+  "description": "projet",
+  "main": "server.js",
+  "dependencies": {
+    "concurrently": "^3.6.0",
+    "nodemon": "^1.17.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+   "server": "nodemon app.js",
+   "start" : "node app.js",
+   "front" : "npm run start --prefix react",
+	"dev" : "concurrently \"npm run server\" \"npm run front\""
+  },
+  "author": "allauren",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/allauren/server.git"
+  },
+  "keywords": [
+    "none"
+  ],
+  "bugs": {
+    "url": "https://github.com/allauren/server/issues"
+  },
+  "homepage": "https://github.com/allauren/server#readme"
+}
